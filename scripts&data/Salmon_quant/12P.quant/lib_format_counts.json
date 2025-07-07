@@ -1,0 +1,22 @@
+{
+    "read_files": "[ results/fastp/12P_1qc.fq ]",
+    "expected_format": "SF",
+    "compatible_fragment_ratio": 1.0,
+    "num_compatible_fragments": 566616,
+    "num_assigned_fragments": 566616,
+    "num_frags_with_concordant_consistent_mappings": 566481,
+    "num_frags_with_inconsistent_or_orphan_mappings": 191,
+    "strand_mapping_bias": 0.999662944348759,
+    "MSF": 0,
+    "OSF": 0,
+    "ISF": 0,
+    "MSR": 0,
+    "OSR": 0,
+    "ISR": 0,
+    "SF": 566481,
+    "SR": 191,
+    "MU": 0,
+    "OU": 0,
+    "IU": 0,
+    "U": 0
+}
