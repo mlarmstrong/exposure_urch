@@ -1,0 +1,17 @@
+,Stage,BeakerID,MatePair,Treatment,abn_count,total,prop.abn,prop.abn.2C
+1,Blastula,A_B1,Pair 1,Control,11,65,0.169230769,0
+2,Blastula,A_B2,Pair 1,100ppb,3,20,0.15,-0.019230769
+3,Blastula,A_B3,Pair 1,500ppb,25,106,0.235849057,0.066618287
+4,Blastula,A_B4,Pair 1,1000ppb,23,99,0.232323232,0.063092463
+5,Blastula,A_B5,Pair 2,Control,45,71,0.633802817,0
+6,Blastula,A_B6,Pair 2,100ppb,46,67,0.686567164,0.052764347
+7,Blastula,A_B7,Pair 2,500ppb,66,79,0.835443038,0.201640221
+8,Blastula,A_B8,Pair 2,1000ppb,79,79,1,0.366197183
+9,Blastula,B_B9,Pair 3,Control,17,89,0.191011236,0
+10,Blastula,B_B10,Pair 3,100ppb,6,100,0.06,-0.131011236
+11,Blastula,B_B11,Pair 3,500ppb,11,103,0.106796117,-0.084215119
+12,Blastula,B_B12,Pair 3,1000ppb,5,71,0.070422535,-0.120588701
+13,Blastula,B_B13,Pair 4,Control,10,100,0.1,0
+14,Blastula,B_B14,Pair 4,100ppb,15,97,0.154639175,0.054639175
+15,Blastula,B_B15,Pair 4,500ppb,20,84,0.238095238,0.138095238
+16,Blastula,B_B16,Pair 4,1000ppb,9,67,0.134328358,0.034328358

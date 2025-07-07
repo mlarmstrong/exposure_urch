@@ -1,0 +1,16 @@
+Measurement,Treatment,MatePair,Heightmean,sd
+Gastrula_height,Control,1,0.12,0.011978663
+Gastrula_height,Control,2,0.130578947,0.008342764
+Gastrula_height,Control,3,0.110511628,0.018400792
+Gastrula_height,Control,4,0.110536585,0.006603399
+Gastrula_height,100ppb,1,0.118849315,0.015866344
+Gastrula_height,100ppb,2,0.135302326,0.009998893
+Gastrula_height,100ppb,3,0.118698113,0.005097454
+Gastrula_height,100ppb,4,0.0955,0.009291573
+Gastrula_height,500ppb,1,0.115456522,0.006804268
+Gastrula_height,500ppb,2,0.123266667,0.009129753
+Gastrula_height,500ppb,3,0.113388889,0.008402653
+Gastrula_height,500ppb,4,0.1173,0.006300376
+Gastrula_height,1000ppb,1,0.115052632,0.023032137
+Gastrula_height,1000ppb,3,0.121444444,0.008254676
+Gastrula_height,1000ppb,4,0.11756,0.006713252

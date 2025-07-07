@@ -1,0 +1,17 @@
+Stage,BeakerID,MatePair,Treatment,abn_count,total
+Gastrula,A_B1,1,Control,9,62
+Gastrula,A_B2,1,100ppb,9,85
+Gastrula,A_B3,1,500ppb,5,57
+Gastrula,A_B4,1,1000ppb,1,66
+Gastrula,A_B5,2,Control,16,66
+Gastrula,A_B6,2,100ppb,40,86
+Gastrula,A_B7,2,500ppb,54,73
+Gastrula,A_B8,2,1000ppb,26,27
+Gastrula,B_B9,3,Control,7,66
+Gastrula,B_B10,3,100ppb,6,78
+Gastrula,B_B11,3,500ppb,16,50
+Gastrula,B_B12,3,1000ppb,5,46
+Gastrula,B_B13,4,Control,4,54
+Gastrula,B_B14,4,100ppb,41,45
+Gastrula,B_B15,4,500ppb,12,47
+Gastrula,B_B16,4,1000ppb,10,71

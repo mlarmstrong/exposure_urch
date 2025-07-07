@@ -1,0 +1,17 @@
+,Stage,BeakerID,MatePair,Treatment,abn_count,total,prop.abn,prop.abn.2C
+1,Gastrula,A_B1,Pair 1,Control,9,62,0.14516129,0
+2,Gastrula,A_B2,Pair 1,100ppb,9,85,0.105882353,-0.039278937
+3,Gastrula,A_B3,Pair 1,500ppb,5,57,0.087719298,-0.057441992
+4,Gastrula,A_B4,Pair 1,1000ppb,1,66,0.015151515,-0.130009775
+5,Gastrula,A_B5,Pair 2,Control,16,66,0.242424242,0
+6,Gastrula,A_B6,Pair 2,100ppb,40,86,0.465116279,0.222692037
+7,Gastrula,A_B7,Pair 2,500ppb,54,73,0.739726027,0.497301785
+8,Gastrula,A_B8,Pair 2,1000ppb,26,27,0.962962963,0.720538721
+9,Gastrula,B_B9,Pair 3,Control,7,66,0.106060606,0
+10,Gastrula,B_B10,Pair 3,100ppb,6,78,0.076923077,-0.029137529
+11,Gastrula,B_B11,Pair 3,500ppb,16,50,0.32,0.213939394
+12,Gastrula,B_B12,Pair 3,1000ppb,5,46,0.108695652,0.002635046
+13,Gastrula,B_B13,Pair 4,Control,4,54,0.074074074,0
+14,Gastrula,B_B14,Pair 4,100ppb,41,45,0.911111111,0.837037037
+15,Gastrula,B_B15,Pair 4,500ppb,12,47,0.255319149,0.181245075
+16,Gastrula,B_B16,Pair 4,1000ppb,10,71,0.14084507,0.066770996

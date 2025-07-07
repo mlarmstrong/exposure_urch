@@ -1,0 +1,161 @@
+﻿Beaker,MatePair,Stage,Treatment,Replicate,Count,Abnormal
+A_B1,1,Early_plut,Control,1,3,0
+A_B1,1,Early_plut,Control,2,9,0
+A_B1,1,Early_plut,Control,3,6,0
+A_B1,1,Early_plut,Control,4,6,0
+A_B1,1,Early_plut,Control,5,6,0
+A_B1,1,Early_plut,Control,6,3,0
+A_B1,1,Early_plut,Control,7,3,0
+A_B1,1,Early_plut,Control,8,2,0
+A_B1,1,Early_plut,Control,9,4,0
+A_B1,1,Early_plut,Control,10,7,0
+A_B2,1,Early_plut,100 ppb,1,5,0
+A_B2,1,Early_plut,100 ppb,2,5,0
+A_B2,1,Early_plut,100 ppb,3,7,0
+A_B2,1,Early_plut,100 ppb,4,3,0
+A_B2,1,Early_plut,100 ppb,5,1,0
+A_B2,1,Early_plut,100 ppb,6,3,0
+A_B2,1,Early_plut,100 ppb,7,8,0
+A_B2,1,Early_plut,100 ppb,8,4,0
+A_B2,1,Early_plut,100 ppb,9,7,0
+A_B2,1,Early_plut,100 ppb,10,4,0
+A_B3,1,Early_plut,500 ppb,1,7,0
+A_B3,1,Early_plut,500 ppb,2,1,0
+A_B3,1,Early_plut,500 ppb,3,6,0
+A_B3,1,Early_plut,500 ppb,4,2,0
+A_B3,1,Early_plut,500 ppb,5,5,0
+A_B3,1,Early_plut,500 ppb,6,3,0
+A_B3,1,Early_plut,500 ppb,7,9,0
+A_B3,1,Early_plut,500 ppb,8,6,0
+A_B3,1,Early_plut,500 ppb,9,2,0
+A_B3,1,Early_plut,500 ppb,10,4,0
+A_B4,1,Early_plut,1000 ppb,1,1,0
+A_B4,1,Early_plut,1000 ppb,2,3,0
+A_B4,1,Early_plut,1000 ppb,3,5,0
+A_B4,1,Early_plut,1000 ppb,4,5,0
+A_B4,1,Early_plut,1000 ppb,5,4,0
+A_B4,1,Early_plut,1000 ppb,6,3,0
+A_B4,1,Early_plut,1000 ppb,7,2,0
+A_B4,1,Early_plut,1000 ppb,8,2,0
+A_B4,1,Early_plut,1000 ppb,9,1,0
+A_B4,1,Early_plut,1000 ppb,10,5,0
+A_B5,2,Early_plut,Control,1,3,0
+A_B5,2,Early_plut,Control,2,3,0
+A_B5,2,Early_plut,Control,3,6,0
+A_B5,2,Early_plut,Control,4,1,0
+A_B5,2,Early_plut,Control,5,1,0
+A_B5,2,Early_plut,Control,6,1,0
+A_B5,2,Early_plut,Control,7,2,0
+A_B5,2,Early_plut,Control,8,2,0
+A_B5,2,Early_plut,Control,9,7,0
+A_B5,2,Early_plut,Control,10,3,0
+A_B6,2,Early_plut,100 ppb,1,5,0
+A_B6,2,Early_plut,100 ppb,2,4,0
+A_B6,2,Early_plut,100 ppb,3,3,0
+A_B6,2,Early_plut,100 ppb,4,3,0
+A_B6,2,Early_plut,100 ppb,5,2,0
+A_B6,2,Early_plut,100 ppb,6,1,0
+A_B6,2,Early_plut,100 ppb,7,2,0
+A_B6,2,Early_plut,100 ppb,8,2,0
+A_B6,2,Early_plut,100 ppb,9,0,0
+A_B6,2,Early_plut,100 ppb,10,2,0
+A_B7,2,Early_plut,500 ppb,1,0,0
+A_B7,2,Early_plut,500 ppb,2,0,0
+A_B7,2,Early_plut,500 ppb,3,1,0
+A_B7,2,Early_plut,500 ppb,4,1,0
+A_B7,2,Early_plut,500 ppb,5,1,0
+A_B7,2,Early_plut,500 ppb,6,0,0
+A_B7,2,Early_plut,500 ppb,7,0,0
+A_B7,2,Early_plut,500 ppb,8,1,0
+A_B7,2,Early_plut,500 ppb,9,0,0
+A_B7,2,Early_plut,500 ppb,10,0,0
+A_B8,2,Early_plut,1000 ppb,1,0,0
+A_B8,2,Early_plut,1000 ppb,2,0,0
+A_B8,2,Early_plut,1000 ppb,3,0,0
+A_B8,2,Early_plut,1000 ppb,4,0,0
+A_B8,2,Early_plut,1000 ppb,5,0,0
+A_B8,2,Early_plut,1000 ppb,6,0,0
+A_B8,2,Early_plut,1000 ppb,7,0,0
+A_B8,2,Early_plut,1000 ppb,8,0,0
+A_B8,2,Early_plut,1000 ppb,9,0,0
+A_B8,2,Early_plut,1000 ppb,10,0,0
+B_B9,3,Early_plut,Control,1,1,0
+B_B9,3,Early_plut,Control,2,2,0
+B_B9,3,Early_plut,Control,3,2,0
+B_B9,3,Early_plut,Control,4,3,0
+B_B9,3,Early_plut,Control,5,4,0
+B_B9,3,Early_plut,Control,6,5,0
+B_B9,3,Early_plut,Control,7,5,0
+B_B9,3,Early_plut,Control,8,6,0
+B_B9,3,Early_plut,Control,9,7,0
+B_B9,3,Early_plut,Control,10,8,0
+B_B10,3,Early_plut,100 ppb,1,1,0
+B_B10,3,Early_plut,100 ppb,2,2,0
+B_B10,3,Early_plut,100 ppb,3,2,0
+B_B10,3,Early_plut,100 ppb,4,3,0
+B_B10,3,Early_plut,100 ppb,5,4,0
+B_B10,3,Early_plut,100 ppb,6,5,0
+B_B10,3,Early_plut,100 ppb,7,5,0
+B_B10,3,Early_plut,100 ppb,8,6,0
+B_B10,3,Early_plut,100 ppb,9,7,0
+B_B10,3,Early_plut,100 ppb,10,8,0
+B_B11,3,Early_plut,500 ppb,1,1,0
+B_B11,3,Early_plut,500 ppb,2,2,0
+B_B11,3,Early_plut,500 ppb,3,2,0
+B_B11,3,Early_plut,500 ppb,4,3,0
+B_B11,3,Early_plut,500 ppb,5,4,0
+B_B11,3,Early_plut,500 ppb,6,5,0
+B_B11,3,Early_plut,500 ppb,7,5,0
+B_B11,3,Early_plut,500 ppb,8,6,0
+B_B11,3,Early_plut,500 ppb,9,7,0
+B_B11,3,Early_plut,500 ppb,10,8,0
+B_B12,3,Early_plut,1000 ppb,1,1,0
+B_B12,3,Early_plut,1000 ppb,2,2,0
+B_B12,3,Early_plut,1000 ppb,3,2,0
+B_B12,3,Early_plut,1000 ppb,4,3,0
+B_B12,3,Early_plut,1000 ppb,5,4,0
+B_B12,3,Early_plut,1000 ppb,6,5,0
+B_B12,3,Early_plut,1000 ppb,7,5,0
+B_B12,3,Early_plut,1000 ppb,8,6,0
+B_B12,3,Early_plut,1000 ppb,9,7,0
+B_B12,3,Early_plut,1000 ppb,10,8,0
+B_B13,4,Early_plut,Control,1,1,0
+B_B13,4,Early_plut,Control,2,2,0
+B_B13,4,Early_plut,Control,3,2,0
+B_B13,4,Early_plut,Control,4,3,0
+B_B13,4,Early_plut,Control,5,4,0
+B_B13,4,Early_plut,Control,6,5,0
+B_B13,4,Early_plut,Control,7,5,0
+B_B13,4,Early_plut,Control,8,6,0
+B_B13,4,Early_plut,Control,9,7,0
+B_B13,4,Early_plut,Control,10,8,0
+B_B14,4,Early_plut,100 ppb,1,2,0
+B_B14,4,Early_plut,100 ppb,2,3,0
+B_B14,4,Early_plut,100 ppb,3,2,0
+B_B14,4,Early_plut,100 ppb,4,2,0
+B_B14,4,Early_plut,100 ppb,5,1,0
+B_B14,4,Early_plut,100 ppb,6,2,0
+B_B14,4,Early_plut,100 ppb,7,2,0
+B_B14,4,Early_plut,100 ppb,8,1,0
+B_B14,4,Early_plut,100 ppb,9,1,0
+B_B14,4,Early_plut,100 ppb,10,2,0
+B_B15,4,Early_plut,500 ppb,1,6,0
+B_B15,4,Early_plut,500 ppb,2,3,0
+B_B15,4,Early_plut,500 ppb,3,6,0
+B_B15,4,Early_plut,500 ppb,4,3,0
+B_B15,4,Early_plut,500 ppb,5,4,0
+B_B15,4,Early_plut,500 ppb,6,6,0
+B_B15,4,Early_plut,500 ppb,7,3,0
+B_B15,4,Early_plut,500 ppb,8,12,0
+B_B15,4,Early_plut,500 ppb,9,3,0
+B_B15,4,Early_plut,500 ppb,10,7,0
+B_B16,4,Early_plut,1000 ppb,1,6,0
+B_B16,4,Early_plut,1000 ppb,2,10,0
+B_B16,4,Early_plut,1000 ppb,3,3,0
+B_B16,4,Early_plut,1000 ppb,4,2,0
+B_B16,4,Early_plut,1000 ppb,5,10,0
+B_B16,4,Early_plut,1000 ppb,6,3,0
+B_B16,4,Early_plut,1000 ppb,7,6,0
+B_B16,4,Early_plut,1000 ppb,8,6,0
+B_B16,4,Early_plut,1000 ppb,9,7,0
+B_B16,4,Early_plut,1000 ppb,10,3,0

@@ -1,0 +1,13 @@
+Measurement,Treatment,MatePair,SAmean,sd
+Pluteus_stomacharea,Control,1,0.004392857,0.000801784
+Pluteus_stomacharea,Control,2,0.00446875,0.000717719
+Pluteus_stomacharea,Control,3,0.003736842,0.000805682
+Pluteus_stomacharea,Control,4,0.003666667,0.001167184
+Pluteus_stomacharea,100ppb,1,0.004571429,0.000741798
+Pluteus_stomacharea,100ppb,2,0.004076923,0.001037749
+Pluteus_stomacharea,500ppb,1,0.003777778,0.000974022
+Pluteus_stomacharea,500ppb,2,0.003307692,0.000630425
+Pluteus_stomacharea,500ppb,4,0.002733333,0.001222799
+Pluteus_stomacharea,1000ppb,1,0.004173913,0.00111405
+Pluteus_stomacharea,1000ppb,3,0.003730769,0.001002305
+Pluteus_stomacharea,1000ppb,4,0.003333333,0.000889757

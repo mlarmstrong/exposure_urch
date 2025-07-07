@@ -1,0 +1,16 @@
+measurement,Treatment,MatePair,SLmean,sd
+Gastrula_stomachlength,Control,1,0.084352941,0.016651294
+Gastrula_stomachlength,Control,2,0.09976,0.01330188
+Gastrula_stomachlength,Control,3,0.069909091,0.011804034
+Gastrula_stomachlength,Control,4,0.083090909,0.013182288
+Gastrula_stomachlength,100ppb,1,0.090375,0.01561999
+Gastrula_stomachlength,100ppb,2,0.098666667,0.015804089
+Gastrula_stomachlength,100ppb,3,0.06374359,0.007475285
+Gastrula_stomachlength,100ppb,4,0.063,0.005567764
+Gastrula_stomachlength,500ppb,1,0.085291667,0.014134384
+Gastrula_stomachlength,500ppb,2,0.093,0.009741093
+Gastrula_stomachlength,500ppb,3,0.067416667,0.007971065
+Gastrula_stomachlength,500ppb,4,0.0852,0.013528138
+Gastrula_stomachlength,1000ppb,1,0.095638889,0.011245705
+Gastrula_stomachlength,1000ppb,3,0.08240625,0.018489508
+Gastrula_stomachlength,1000ppb,4,0.089953488,0.012307476

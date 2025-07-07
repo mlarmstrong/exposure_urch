@@ -1,0 +1,13 @@
+Measurement,Treatment,MatePair,BLmean,sd
+Pluteus_bodylength,Control,1,0.240961538,0.022267502
+Pluteus_bodylength,Control,2,0.240555556,0.017587875
+Pluteus_bodylength,Control,3,0.2234,0.018984204
+Pluteus_bodylength,Control,4,0.2439,0.018023085
+Pluteus_bodylength,100ppb,1,0.25404,0.021678484
+Pluteus_bodylength,100ppb,2,0.268363636,0.016686957
+Pluteus_bodylength,500ppb,1,0.238115385,0.02400721
+Pluteus_bodylength,500ppb,2,0.239307692,0.012168159
+Pluteus_bodylength,500ppb,4,0.225928571,0.02273413
+Pluteus_bodylength,1000ppb,1,0.246,0.015014279
+Pluteus_bodylength,1000ppb,3,0.237136364,0.023007857
+Pluteus_bodylength,1000ppb,4,0.24621875,0.018208

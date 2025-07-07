@@ -1,0 +1,13 @@
+Measurement,Treatment,MatePair,ALmean,sd
+Pluteus_armlength,Control,1,0.305254902,0.03512782
+Pluteus_armlength,Control,2,0.312666667,0.023495499
+Pluteus_armlength,Control,3,0.266266667,0.025341149
+Pluteus_armlength,Control,4,0.285875,0.021117388
+Pluteus_armlength,100ppb,1,0.31768,0.033730822
+Pluteus_armlength,100ppb,2,0.346909091,0.029802532
+Pluteus_armlength,500ppb,1,0.298846154,0.032702835
+Pluteus_armlength,500ppb,2,0.299346154,0.020012896
+Pluteus_armlength,500ppb,4,0.267428571,0.028168352
+Pluteus_armlength,1000ppb,1,0.318477273,0.022539107
+Pluteus_armlength,1000ppb,3,0.288568182,0.020474313
+Pluteus_armlength,1000ppb,4,0.287578125,0.022092222

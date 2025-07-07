@@ -1,0 +1,65 @@
+Stage,Beaker,MatePair,Treatment,mean.per.mL,se.prop
+Blastula,A_B1,1,Control,29.8,1.233333333
+Blastula,A_B2,1,100 ppb,39.6,1.323295549
+Blastula,A_B3,1,500 ppb,36,1.699673171
+Blastula,A_B4,1,1000 ppb,19.2,0.933333333
+Blastula,A_B5,2,Control,22,1.201850425
+Blastula,A_B6,2,100 ppb,18.4,1.380821012
+Blastula,A_B7,2,500 ppb,16.8,0.520683312
+Blastula,A_B8,2,1000 ppb,16.8,0.520683312
+Blastula,B_B10,3,100 ppb,20.2,1.277584526
+Blastula,B_B11,3,500 ppb,21.2,1.292714629
+Blastula,B_B12,3,1000 ppb,13.8,1.159022577
+Blastula,B_B13,4,Control,15.8,0.657436097
+Blastula,B_B14,4,100 ppb,15.6,0.853749898
+Blastula,B_B15,4,500 ppb,14.8,0.561743318
+Blastula,B_B16,4,1000 ppb,9.6,0.611010093
+Blastula,B_B9,3,Control,19.2,1.4
+Early_plut,A_B1,1,Control,9.8,0.70632067
+Early_plut,A_B2,1,100 ppb,9.4,0.683942818
+Early_plut,A_B3,1,500 ppb,9,0.806225775
+Early_plut,A_B4,1,1000 ppb,6.2,0.504424865
+Early_plut,A_B5,2,Control,5.8,0.657436097
+Early_plut,A_B6,2,100 ppb,4.8,0.452155332
+Early_plut,A_B7,2,500 ppb,0.8,0.163299316
+Early_plut,A_B8,2,1000 ppb,0,0
+Early_plut,B_B10,3,100 ppb,8.6,0.731057073
+Early_plut,B_B11,3,500 ppb,8.6,0.731057073
+Early_plut,B_B12,3,1000 ppb,8.6,0.731057073
+Early_plut,B_B13,4,Control,8.6,0.731057073
+Early_plut,B_B14,4,100 ppb,3.6,0.2
+Early_plut,B_B15,4,500 ppb,10.6,0.895048105
+Early_plut,B_B16,4,1000 ppb,11.2,0.909212113
+Early_plut,B_B9,3,Control,8.6,0.731057073
+Pluteus,A_B1,1,Control,14.2,1.30341432
+Pluteus,A_B2,1,100 ppb,13.4,0.66749948
+Pluteus,A_B3,1,500 ppb,15.2,0.99107125
+Pluteus,A_B4,1,1000 ppb,10.8,0.819213715
+Pluteus,A_B5,2,Control,8.6,0.7
+Pluteus,A_B6,2,100 ppb,5,0.372677996
+Pluteus,A_B7,2,500 ppb,3.8,0.546707316
+Pluteus,A_B8,2,1000 ppb,0,0
+Pluteus,B_B10,3,100 ppb,13.2,0.89690827
+Pluteus,B_B11,3,500 ppb,14,1.264911064
+Pluteus,B_B12,3,1000 ppb,13.2,1.03494498
+Pluteus,B_B13,4,Control,9,0.542627353
+Pluteus,B_B14,4,100 ppb,2.8,0.371184291
+Pluteus,B_B15,4,500 ppb,9.2,1.045625809
+Pluteus,B_B16,4,1000 ppb,11.8,0.622718056
+Pluteus,B_B9,3,Control,15,1.118033989
+Gastrula,A_B1,1,Control,18.8,1.127435635
+Gastrula,A_B2,1,100 ppb,21.2,0.763034876
+Gastrula,A_B3,1,500 ppb,20.8,0.805536398
+Gastrula,A_B4,1,1000 ppb,20.2,1.277584526
+Gastrula,A_B5,2,Control,11.6,0.646357314
+Gastrula,A_B6,2,100 ppb,12.2,0.604611905
+Gastrula,A_B7,2,500 ppb,6.4,0.663324958
+Gastrula,A_B8,2,1000 ppb,0.4,0.133333333
+Gastrula,B_B10,3,100 ppb,14.4,1.171893055
+Gastrula,B_B11,3,500 ppb,18.4,1.072898463
+Gastrula,B_B12,3,1000 ppb,14.6,0.633333333
+Gastrula,B_B13,4,Control,22,1.238278375
+Gastrula,B_B14,4,100 ppb,0.6,0.152752523
+Gastrula,B_B15,4,500 ppb,12.6,0.472581563
+Gastrula,B_B16,4,1000 ppb,20.4,0.975249256
+Gastrula,B_B9,3,Control,16.8,0.858939915

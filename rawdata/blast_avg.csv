@@ -1,0 +1,16 @@
+measurement,Treatment,MatePair,mean,sd
+blastula_height,Control,1,0.087259259,0.002782595
+blastula_height,Control,2,0.093,0.0031241
+blastula_height,Control,3,0.086166667,0.00358793
+blastula_height,Control,4,0.088611111,0.003121849
+blastula_height,100ppb,1,0.092588235,0.005477897
+blastula_height,100ppb,2,0.103,0.007071068
+blastula_height,100ppb,3,0.093033708,0.003342051
+blastula_height,100ppb,4,0.086987805,0.003676733
+blastula_height,500ppb,1,0.094148148,0.003588562
+blastula_height,500ppb,2,0.093461538,0.003430631
+blastula_height,500ppb,3,0.093204301,0.003268955
+blastula_height,500ppb,4,0.08496875,0.003371066
+blastula_height,1000ppb,1,0.097,0.005324159
+blastula_height,1000ppb,3,0.098272727,0.004741131
+blastula_height,1000ppb,4,0.083275862,0.003386211
