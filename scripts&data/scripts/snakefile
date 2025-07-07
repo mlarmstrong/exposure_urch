@@ -1,0 +1,98 @@
+import sys
+
+with open('sample_names.txt') as f:
+    SAMPLES = f.read().splitlines()
+
+print('samples are:', SAMPLES, file=sys.stderr)
+
+with open('references.txt') as f2:
+    REF = f2.read().splitlines()
+    REF_r = [REF[0]]
+    REF_g = [REF[1]]
+
+ruleorder: index_reference > index_reference2
+
+rule all:
+    input:
+        expand("results/fastqc/tag282_{sample}_R1_001_fastqc.html", sample=SAMPLES),
+        expand("results/fastp/{sample}_1qc.fq", sample=SAMPLES),
+        "results/Salmon_index",
+        expand("results/Salmon_quant/{sample}.quant", sample=SAMPLES),
+        "results/Salmon_quant/all_quant.sf"
+
+rule make_fastqc:
+    input:
+        R1 = "tag282_{sample}_R1_001.fastq.gz",
+    params:
+        outdir = "results/fastqc",
+    priority: 2
+    log:
+        R1 = "logs/fastqc/{sample}_R1.txt",
+    output:
+        "results/fastqc/tag282_{sample}_R1_001_fastqc.html",
+        "results/fastqc/tag282_{sample}_R1_001_fastqc.zip",
+    run:
+        shell("fastqc {input.R1} -o results/fastqc 2> {log.R1}")
+
+rule trim_fastp:
+    input:
+        R1 = "tag282_{sample}_R1_001.fastq.gz",
+    params:
+        outdir = "results/fastp",
+    priority: 2
+    log:
+        "logs/fastp/{sample}.txt",
+    output:
+        outR1 = "results/fastp/{sample}_1qc.fq",
+    shell:
+        "fastp --in1 {input.R1} --out1 {output.outR1} --detect_adapter_for_pe 2> {log}"
+
+rule index_reference:
+    input:
+        g = REF_g,
+        r = REF_r,
+    output:
+        directory("results/Salmon_index")
+    log:
+        "logs/salmon/index.txt",
+    priority: 3
+    run:
+        shell("grep '^>' <(gunzip -c {input.g}) | cut -d ' ' -f 1 > decoys.txt")
+        shell("sed -i.bak -e 's/>//g' decoys.txt")
+        shell("cat {input.r} {input.g} > gentrome.fa.gz")
+        shell("salmon index --index {output} --transcripts gentrome.fa.gz -d decoys.txt --gencode 2> {log}")
+
+rule index_reference2:
+  input:
+    r = REF_r
+  output:
+    directory("results/Salmon_index")
+  log:
+    "logs/salmon/index.txt"
+  priority: 3
+  shell:
+    "salmon index --index {output} --transcripts {input.r} --gencode"
+
+rule salmon_quant:
+    input:
+        R1 = "results/fastp/{sample}_1qc.fq",
+    log:
+        "logs/salmon/{sample}_quant.txt",
+    params:
+        outdir = "results/Salmon_quant",
+    priority: 1
+    output:
+        directory("results/Salmon_quant/{sample}.quant"),
+    shell:
+        "salmon quant -i results/Salmon_index --libType A -r {input.R1} -o {output} --validateMappings --seqBias --gcBias 2> {log}"
+
+rule salmon_merge:
+    input:
+        expand("results/Salmon_quant/{sample}.quant", sample=SAMPLES),
+    log:
+        "logs/salmon/merge.txt",
+    output:
+        "results/Salmon_quant/all_quant.sf"
+    priority: 0
+    shell:
+        "salmon quantmerge --quants {input} -o {output} 2> {log}"
