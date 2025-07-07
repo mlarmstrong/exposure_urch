@@ -1,0 +1,11 @@
+{
+    "salmon_version": "1.10.1",
+    "index": "results/Salmon_index",
+    "libType": "A",
+    "unmatedReads": "results/fastp/9P_1qc.fq",
+    "output": "results/Salmon_quant/9P.quant",
+    "validateMappings": [],
+    "seqBias": [],
+    "gcBias": [],
+    "auxDir": "aux_info"
+}
