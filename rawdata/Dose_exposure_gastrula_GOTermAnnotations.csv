@@ -1,0 +1,82 @@
+﻿GO.ID,GO_class,Term,Annotated,Significant,Expected,classic,Stage
+GO:0003735,MF,structural constituent of ribosome,161,31,1.61,< 1e-30,Gastrula
+GO:0003723,MF,RNA binding,823,19,8.24,0.00047,Gastrula
+GO:0031593,MF,polyubiquitin modification-dependent protein binding,23,3,0.23,0.00149,Gastrula
+GO:0140030,MF,modification-dependent protein binding,47,3,0.47,0.01151,Gastrula
+GO:0003729,MF,mRNA binding,151,5,1.51,0.01773,Gastrula
+GO:0019887,MF,protein kinase regulator activity,56,3,0.56,0.01844,Gastrula
+GO:0030234,MF,enzyme regulator activity,408,9,4.09,0.021,Gastrula
+GO:0015078,MF,proton transmembrane transporter activity,61,3,0.61,0.0231,Gastrula
+GO:0019207,MF,kinase regulator activity,62,3,0.62,0.0241,Gastrula
+GO:0098772,MF,molecular function regulator activity,495,10,4.96,0.02631,Gastrula
+GO:0003676,MF,nucleic acid binding,2137,29,21.4,0.04567,Gastrula
+GO:0005783,CC,endoplasmic reticulum,476,15,5.45,0.00033,Gastrula
+GO:0005743,CC,mitochondrial inner membrane,156,8,1.79,0.00041,Gastrula
+GO:0098803,CC,respiratory chain complex,56,5,0.64,0.00043,Gastrula
+GO:0070469,CC,respirasome,57,5,0.65,0.00047,Gastrula
+GO:0098796,CC,membrane protein complex,440,14,5.04,0.00048,Gastrula
+GO:0019866,CC,organelle inner membrane,167,8,1.91,0.00064,Gastrula
+GO:0031090,CC,organelle membrane,937,22,10.72,0.00083,Gastrula
+GO:0098800,CC,inner mitochondrial membrane protein complex,68,5,0.78,0.00106,Gastrula
+GO:0031966,CC,mitochondrial membrane,206,8,2.36,0.00246,Gastrula
+GO:0005740,CC,mitochondrial envelope,225,8,2.57,0.00423,Gastrula
+GO:1902554,CC,serine/threonine protein kinase complex,47,3,0.54,0.01643,Gastrula
+GO:0098798,CC,mitochondrial protein-containing complex,130,5,1.49,0.0166,Gastrula
+GO:0005789,CC,endoplasmic reticulum membrane,288,8,3.3,0.01736,Gastrula
+GO:0031967,CC,organelle envelope,291,8,3.33,0.01836,Gastrula
+GO:0031975,CC,envelope,291,8,3.33,0.01836,Gastrula
+GO:0042175,CC,nuclear outer membrane-endoplasmic reticulum membrane network,291,8,3.33,0.01836,Gastrula
+GO:0098827,CC,endoplasmic reticulum subcompartment,292,8,3.34,0.0187,Gastrula
+GO:1902911,CC,protein kinase complex,52,3,0.6,0.02149,Gastrula
+GO:1902494,CC,catalytic complex,858,16,9.82,0.03468,Gastrula
+GO:1990204,CC,oxidoreductase complex,68,3,0.78,0.04277,Gastrula
+GO:0009060,BP,aerobic respiration,67,6,0.77,0.00011,Gastrula
+GO:0022904,BP,respiratory electron transport chain,45,5,0.52,0.00015,Gastrula
+GO:0045333,BP,cellular respiration,75,6,0.86,0.00021,Gastrula
+GO:0032507,BP,maintenance of protein location in cell,11,3,0.13,0.00023,Gastrula
+GO:0045185,BP,maintenance of protein location,11,3,0.13,0.00023,Gastrula
+GO:0022900,BP,electron transport chain,50,5,0.57,0.00026,Gastrula
+GO:0044249,BP,cellular biosynthetic process,2876,50,33.05,0.00034,Gastrula
+GO:0034641,BP,cellular nitrogen compound metabolic process,2696,47,30.99,0.00057,Gastrula
+GO:0015980,BP,energy derivation by oxidation of organic compounds,91,6,1.05,0.0006,Gastrula
+GO:0044237,BP,cellular metabolic process,4397,67,50.53,0.00068,Gastrula
+GO:0042274,BP,ribosomal small subunit biogenesis,62,5,0.71,0.0007,Gastrula
+GO:1901576,BP,organic substance biosynthetic process,2963,50,34.05,0.00073,Gastrula
+GO:0042254,BP,ribosome biogenesis,217,9,2.49,0.00085,Gastrula
+GO:0009058,BP,biosynthetic process,2994,50,34.41,0.00095,Gastrula
+GO:0006613,BP,cotranslational protein targeting to membrane,18,3,0.21,0.00106,Gastrula
+GO:0006614,BP,SRP-dependent cotranslational protein targeting to membrane,18,3,0.21,0.00106,Gastrula
+GO:0045859,BP,regulation of protein kinase activity,21,3,0.24,0.00169,Gastrula
+GO:0022613,BP,ribonucleoprotein complex biogenesis,292,10,3.36,0.00187,Gastrula
+GO:0006414,BP,translational elongation,23,3,0.26,0.00221,Gastrula
+GO:0043549,BP,regulation of kinase activity,23,3,0.26,0.00221,Gastrula
+GO:0051651,BP,maintenance of location in cell,23,3,0.26,0.00221,Gastrula
+GO:0009987,BP,cellular process,8030,100,92.29,0.00244,Gastrula
+GO:0006091,BP,generation of precursor metabolites and energy,121,6,1.39,0.00263,Gastrula
+GO:0045047,BP,protein targeting to ER,26,3,0.3,0.00316,Gastrula
+GO:0051235,BP,maintenance of location,26,3,0.3,0.00316,Gastrula
+GO:0072599,BP,establishment of protein localization to endoplasmic reticulum,26,3,0.3,0.00316,Gastrula
+GO:0000462,BP,"maturation of SSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)",27,3,0.31,0.00353,Gastrula
+GO:0051338,BP,regulation of transferase activity,30,3,0.34,0.00478,Gastrula
+GO:0031399,BP,regulation of protein modification process,62,4,0.71,0.00551,Gastrula
+GO:0006612,BP,protein targeting to membrane,32,3,0.37,0.00574,Gastrula
+GO:0001932,BP,regulation of protein phosphorylation,35,3,0.4,0.00739,Gastrula
+GO:0042255,BP,ribosome assembly,36,3,0.41,0.00799,Gastrula
+GO:0042325,BP,regulation of phosphorylation,38,3,0.44,0.00929,Gastrula
+GO:0030490,BP,maturation of SSU-rRNA,39,3,0.45,0.00998,Gastrula
+GO:0043170,BP,macromolecule metabolic process,4099,59,47.11,0.01153,Gastrula
+GO:0033365,BP,protein localization to organelle,174,6,2,0.0149,Gastrula
+GO:0008152,BP,metabolic process,5346,72,61.44,0.01898,Gastrula
+GO:0051246,BP,regulation of protein metabolic process,189,6,2.17,0.0215,Gastrula
+GO:0006807,BP,nitrogen compound metabolic process,4496,62,51.67,0.0248,Gastrula
+GO:0044085,BP,cellular component biogenesis,832,16,9.56,0.02736,Gastrula
+GO:0090150,BP,establishment of protein localization to membrane,57,3,0.66,0.02756,Gastrula
+GO:0019220,BP,regulation of phosphate metabolic process,58,3,0.67,0.02883,Gastrula
+GO:0051174,BP,regulation of phosphorus metabolic process,58,3,0.67,0.02883,Gastrula
+GO:0140694,BP,non-membrane-bounded organelle assembly,103,4,1.18,0.03061,Gastrula
+GO:0042273,BP,ribosomal large subunit biogenesis,60,3,0.69,0.03146,Gastrula
+GO:0022618,BP,protein-RNA complex assembly,107,4,1.23,0.03452,Gastrula
+GO:0051668,BP,localization within membrane,112,4,1.29,0.0398,Gastrula
+GO:0071826,BP,protein-RNA complex organization,112,4,1.29,0.0398,Gastrula
+GO:0071840,BP,cellular component organization or biogenesis,1923,30,22.1,0.04027,Gastrula
+GO:0071705,BP,nitrogen compound transport,549,11,6.31,0.0499,Gastrula
