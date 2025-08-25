@@ -3,12 +3,14 @@
 #Madison Armstrong 
 #Last Modified 7/7/2025
 
+setwd("~/Desktop/purp development")
 #with the defaults
 library(RColorBrewer)
 library(ggplot2)
 library(tidyr)
 library(dplyr)
 library(tidyverse)
+library(patchwork)
 
 #figure theme to keep things consistent
 theme_box <- function(base_size = 11, base_family = '') {
@@ -16,6 +18,14 @@ theme_box <- function(base_size = 11, base_family = '') {
     theme(text = element_text(size = 12), 
           panel.border = element_rect(color = "black", fill = NA, size = 1)) 
 }
+
+##color scheme
+cb4 <- c(
+  "Pair 1" = "#00AEEF",  # Teal / Cyan
+  "Pair 2" = "#99CC33",  # Lime Green
+  "Pair 3" = "#FF6F00",  # Reddish Orange
+  "Pair 4" = "#990099"   # Purple / Magenta
+)
 
 ###BLASTULA####
 #Import the blastula measurements, select and rename useful columns, and
@@ -35,19 +45,27 @@ blast_measure_avg<-blast_measure %>% dplyr::group_by(Treatment, MatePair) %>%
   dplyr::summarise(mean = mean(size), sd = sd(size))
 
 write.csv(blast_measure_avg, "Dose_exposure/blast_avg.csv")
+
+blast_measure_avg$MatePair<- factor(x=blast_measure_avg$MatePair, labels=c(
+  "1" ="Pair 1",
+  "2" = "Pair 2",
+  "3" = "Pair 3",
+  "4" = "Pair 4"
+))
+
 #Box plots for treatment, mate pair, and experiment
 size<-
   ggplot(blast_measure_avg, aes(x=Treatment, y=mean, color=MatePair)) +
-  geom_point(size=2)+
+  geom_point(size=4)+
   geom_line(aes(color= MatePair, group=MatePair))+
   geom_point(aes(group = MatePair,color = MatePair),size = 2.3) +
   geom_errorbar(aes(x = Treatment, ymin=mean-sd, ymax=mean+sd, color = MatePair), 
                 width = .1, linewidth=0.1) + 
-  labs(title = '', x = 'Nonylphenol Concentration', y = 'Blastula Size (nm)')+
+  labs(title = 'A. Size', x = 'Nonylphenol Concentration', y = 'Blastula Size (nm)')+
   theme_box() +
-  scale_color_brewer(palette="Dark2")
+    scale_color_manual(values = cb4)
 
-ggsave("Dose_exposure/figs/Blastula Size/blast_size.png",size, width=18, height=16, units = "cm") 
+ggsave("Dose_exposure/figs/blast_size.png",size, width=20, height=15, units = "cm") 
 
 blast<-glm(size~Treatment*MatePair, data=blast_measure) #not on means
 #relationship of size and treatment with mate pair as a random effect
@@ -59,7 +77,7 @@ summary(subblast)
 
 anova(subblast)
 
-#####GASTRULA####
+###GASTRULA####
 gast_measure<-read.csv("Dose_exposure/Gastrula_measurements.csv") 
 gast_measure %>% dplyr::select(BeakerID, MatePair, Treatment, Height.mm., Stomach_Length.mm.) %>%
   mutate(Experiment=ifelse(MatePair==1 | MatePair==2, 1, 2))-> gast_measure
@@ -73,46 +91,61 @@ gast_measure$MatePair<-factor(gast_measure$MatePair, levels=c("1", "2", "3", "4"
 Hgast_measure<-gast_measure %>% 
   select(BeakerID, MatePair, Treatment, Height.mm.) %>% 
   drop_na()
+
 Hgastsum<-Hgast_measure %>% dplyr::group_by(Treatment, MatePair) %>% 
   dplyr::summarise(Heightmean = mean(Height.mm.), sd = sd(Height.mm.)) %>% 
   drop_na(sd) #this removes any datapoints that only had one individual aka no sd
 
+Hgastsum$MatePair<- factor(x=Hgastsum$MatePair, labels=c(
+  "1" ="Pair 1",
+  "2" = "Pair 2",
+  "3" = "Pair 3",
+  "4" = "Pair 4"
+))
 write.csv(Hgastsum, "Dose_exposure/gastheight_avg.csv")
 #stomach length
+
 SLgast_measure<-gast_measure %>% 
   select(BeakerID, MatePair, Treatment, Stomach_Length.mm.) %>% 
   drop_na()
 SLgastsum<-SLgast_measure %>% dplyr::group_by(Treatment, MatePair) %>% 
   dplyr::summarise(SLmean = mean(Stomach_Length.mm.), sd = sd(Stomach_Length.mm.))%>% 
   drop_na(sd) #this removes any datapoints that only had one individual aka no sd
+
+SLgastsum$MatePair<- factor(x=SLgastsum$MatePair, labels=c(
+  "1" ="Pair 1",
+  "2" = "Pair 2",
+  "3" = "Pair 3",
+  "4" = "Pair 4"
+))
+
 write.csv(SLgastsum, "Dose_exposure/gastSL_avg.csv")
 #ggplots!!
 
 gast.height<-
 ggplot(Hgastsum, aes(x=Treatment, y=Heightmean, color=MatePair)) +
-  geom_point(size=2)+
+  geom_point(size=4)+
   geom_line(aes(color= MatePair, group=MatePair))+
   geom_point(aes(group = MatePair,color = MatePair),size = 2.3) +
   geom_errorbar(aes(x = Treatment, ymin=Heightmean-sd, ymax=Heightmean+sd, color = MatePair), 
                 width = .1, linewidth=0.1) + 
-  labs(title = '', x = 'Nonylphenol Concentration', y = 'Gastrula Height (nm)')+
+  labs(title = 'A. Height', x = 'Nonylphenol Concentration', y = 'Gastrula Height (nm)')+
   theme_box()+
-  scale_color_brewer(palette="Dark2")
+  scale_color_manual(values = cb4)
 
 gast.stomach<-
 ggplot(SLgastsum, aes(x=Treatment, y=SLmean, color=MatePair)) +
-  geom_point(size=2)+
+  geom_point(size=4)+
   geom_line(aes(color= MatePair, group=MatePair))+
   geom_point(aes(group = MatePair,color = MatePair),size = 2.3) +
   geom_errorbar(aes(x = Treatment, ymin=SLmean-sd, ymax=SLmean+sd, color = MatePair), 
                 width = .1, linewidth=0.1) + 
-  labs(title = '', x = 'Nonylphenol Concentration', y = 'Gastrula Stomach Length (nm)')+
+  labs(title = 'B. Stomach Length', x = 'Nonylphenol Concentration', y = 'Gastrula Stomach Length (nm)')+
   theme_box()+
-  scale_color_brewer(palette="Dark2")
+  scale_color_manual(values = cb4)
 
-fullgast.figs <- grid.arrange(gast.height, gast.stomach, nrow = 2)
-
-ggsave("fullgast.figs.png",fullgast.figs, width=16, height=18, units = "cm") 
+fullgast.figs <- gast.height + gast.stomach + plot_layout(guides="collect")
+ggsave("dose_exposure/figs/fullgast.figs.png",fullgast.figs, width=40, height=20, units = "cm") 
 
 gast<-glm(Height.mm.~Treatment*MatePair, data=gast_measure) 
 anova(gast)
@@ -120,7 +153,7 @@ gast2<-glm(Stomach_Length.mm.~Treatment*MatePair, data=gast_measure)
 anova(gast2)
 
 
-####PLUTEUS####
+###PLUTEUS####
 plut_measure<-read.csv("Dose_exposure/pluteus7dpf_measurements.csv") 
 
 plut_measure <- mutate(plut_measure, AL_mm = ifelse(is.na(AL1_mm), ifelse(is.na(AL2_mm), NA, AL2_mm), 
@@ -141,6 +174,12 @@ BLplutsum<-BLplut_measure %>% dplyr::group_by(Treatment, MatePair) %>%
   dplyr::summarise(BLmean = mean(BL_mm), sd = sd(BL_mm)) %>% 
   drop_na(sd) #this removes any datapoints that only had one individual aka no sd
 
+BLplutsum$MatePair<- factor(x=BLplutsum$MatePair, labels=c(
+  "1" ="Pair 1",
+  "2" = "Pair 2",
+  "3" = "Pair 3",
+  "4" = "Pair 4"
+))
 write.csv(BLplutsum, "Dose_exposure/plutBL_avg.csv")
 
 ALplut_measure<-plut_measure %>% 
@@ -150,6 +189,12 @@ ALplutsum<-ALplut_measure %>% dplyr::group_by(Treatment, MatePair) %>%
   dplyr::summarise(ALmean = mean(AL_mm), sd = sd(AL_mm))%>% 
   drop_na(sd) #this removes any datapoints that only had one individual aka no sd
 
+ALplutsum$MatePair<- factor(x=ALplutsum$MatePair, labels=c(
+  "1" ="Pair 1",
+  "2" = "Pair 2",
+  "3" = "Pair 3",
+  "4" = "Pair 4"
+))
 write.csv(ALplutsum, "Dose_exposure/plutAL_avg.csv")
 
 SAplut_measure<-plut_measure %>% 
@@ -159,44 +204,50 @@ SAplutsum<-SAplut_measure %>% dplyr::group_by(Treatment, MatePair) %>%
   dplyr::summarise(SAmean = mean(stomach_mm), sd = sd(stomach_mm))%>% 
   drop_na(sd) #this removes any datapoints that only had one individual aka no sd
 
+SAplutsum$MatePair<- factor(x=SAplutsum$MatePair, labels=c(
+  "1" ="Pair 1",
+  "2" = "Pair 2",
+  "3" = "Pair 3",
+  "4" = "Pair 4"
+))
+
 write.csv(SAplutsum, "Dose_exposure/plutSA_avg.csv")
 
 #now let's make some graphs!!
 plutBL<-
   ggplot(BLplutsum, aes(x=Treatment, y=BLmean, color=MatePair)) +
-  geom_point(size=2)+
+  geom_point(size=4)+
   geom_line(aes(color= MatePair, group=MatePair))+
   geom_point(aes(group = MatePair,color = MatePair),size = 2.3) +
   geom_errorbar(aes(x = Treatment, ymin=BLmean-sd, ymax=BLmean+sd, color = MatePair), 
                 width = .1, linewidth=0.1) + 
-  labs(title = '', x = 'Nonylphenol Concentration', y = 'Pluteus Body Length (nm)')+
+  labs(title = 'A. Body Length', x = 'Nonylphenol Concentration', y = 'Pluteus Body Length (nm)')+
   theme_box()+
-    scale_color_brewer(palette="Dark2")
+  scale_color_manual(values = cb4)
 
 plutAL<-ggplot(ALplutsum, aes(x=Treatment, y=ALmean, color=MatePair)) +
-  geom_point(size=2)+
+  geom_point(size=4)+
   geom_line(aes(color= MatePair, group=MatePair))+
   geom_point(aes(group = MatePair,color = MatePair),size = 2.3) +
   geom_errorbar(aes(x = Treatment, ymin=ALmean-sd, ymax=ALmean+sd, color = MatePair), 
                 width = .1, linewidth=0.1) + 
-  labs(title = '', x = 'Nonylphenol Concentration', y = 'Pluteus Arm Length (nm)')+
+  labs(title = 'B. Arm Length', x = 'Nonylphenol Concentration', y = 'Pluteus Arm Length (nm)')+
   theme_box()+
-  scale_color_brewer(palette="Dark2")
+  scale_color_manual(values = cb4)
 
 plutSA<-
   ggplot(SAplutsum, aes(x=Treatment, y=SAmean, color=MatePair)) +
-  geom_point(size=2)+
+  geom_point(size=4)+
   geom_line(aes(color= MatePair, group=MatePair))+
   geom_point(aes(group = MatePair,color = MatePair),size = 2.3) +
   geom_errorbar(aes(x = Treatment, ymin=SAmean-sd, ymax=SAmean+sd, color = MatePair), 
                 width = .1, linewidth=0.1) + 
-  labs(title = '', x = 'Nonylphenol Concentration', y = 'Pluteus Stomach Area (nm^2)')+
+  labs(title = 'C. Stomach Area', x = 'Nonylphenol Concentration', y = 'Pluteus Stomach Area (nm^2)')+
   theme_box()+
-  scale_color_brewer(palette="Dark2")
+  scale_color_manual(values = cb4)
 
-fullplut.figs <- grid.arrange(plutBL, plutAL, plutSA, nrow = 3)
-
-ggsave("fullplut.figs.png",fullplut.figs, width=16, height=18, units = "cm") 
+fullplut.figs <- plutBL + plutAL + plutSA + plot_layout(guides="collect")
+ggsave("dose_exposure/figs/fullplut.figs.png",fullplut.figs, width=40, height=20, units = "cm") 
 
 ##stats
 #Plut BL stats w mp2

@@ -29,7 +29,7 @@ gast.results$significant <- ifelse(gast.results[[parname]] < significance_thresh
 parsig.gast = which(gast.results$significant==1)
 length(parsig.gast) #171 yay it worked
 gast.results.sig <- gast.results[!is.na(gast.results$significant) & gast.results$significant != 0, ] #get rid of NAs & 0s
-
+write.csv(gast.results.sig,"Dose_exposure/RNA_data/gast.results.sig.full.csv")
 ###pluteus####
 plut.results<-read.csv("Dose_exposure/RNA_data/results.plut_LRT.csv")
 parnames <- "padj"  # Corrected column name
@@ -40,7 +40,7 @@ plut.results$significant <- ifelse(plut.results[[parnames]] < significance_thres
 parsig.plut = which(plut.results$significant==1)
 length(parsig.plut) #51 yay it worked
 plut.results.sig <- plut.results[!is.na(plut.results$significant) & plut.results$significant != 0, ] #get rid of NAs & 0s
-
+write.csv(plut.results.sig,"Dose_exposure/RNA_data/plut.results.sig.full.csv")
 #Get annotations from biomaRt####
 metazoa_mart <- useMart(biomart = 'metazoa_mart',
                         host = "https://metazoa.ensembl.org/")

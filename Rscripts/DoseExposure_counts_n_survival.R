@@ -3,6 +3,7 @@
 #Madison Armstrong 
 #Last Modified 7/7/2025
 
+
 setwd("~/Desktop/purp dev data")
 
 library(ggplot2)
@@ -20,6 +21,15 @@ theme_box <- function(base_size = 11, base_family = '') {
     theme(text = element_text(size = 20), 
           panel.border = element_rect(color = "black", fill = NA, size = 1)) 
 }
+##color scheme
+cb4.n <- c(
+  "Pair 1" = "#00AEEF",  # Teal / Cyan
+  "Pair 2" = "#99CC33",  # Lime Green
+  "Pair 3" = "#FF6F00",  # Reddish Orange
+  "Pair 4" = "#990099"   # Purple / Magenta
+)
+
+
 
 #Fertilization## 
   #Fertilization#----
@@ -48,13 +58,15 @@ fert.summary$MatePair<- factor(x=fert.summary$MatePair, labels=c(
   "4" = "Pair 4"
 ))
 
-#Ff<-
+Ff<-
   ggplot(fert.summary, aes(x=Treatment, y=mean.prop, color=MatePair)) +
-    geom_point(size=2)+ ylim(0,1)+
+    geom_point(size=4)+ ylim(0,1)+
     geom_line(aes(color= MatePair, group=MatePair))+
-  labs(title = 'Fertilization Success', x = 'Nonylphenol Concentration', y = 'Proportion of Fertilized Embryos')+
+    geom_errorbar(aes(x = Treatment, ymin=mean.prop-se.prop, ymax=mean.prop+se.prop, color = MatePair), 
+                  width = .1, linewidth=0.1) + 
+  labs(title = 'A. Fertilization Success', x = 'Nonylphenol Concentration', y = 'Proportion of Fertilized Embryos')+
     theme_box()+
-  scale_color_brewer(palette="Dark2")
+    scale_color_manual(values = cb4.n)
 
 
 #Stats: are these groups statically different?
@@ -83,17 +95,19 @@ dev.summary$MatePair<- factor(x=dev.summary$MatePair, labels=c(
   "4" = "Pair 4"
 ))
 
-#DD<-
+DD<-
   ggplot(dev.summary, aes(x=Treatment, y=mean.prop, color=MatePair))+
-    geom_point(size=2)+ ylim(0,1)+
+    geom_point(size=4)+ ylim(0,1)+
     geom_line(aes(color= MatePair, group=MatePair))+
-  labs(title = 'Developmental Success', x = 'Nonylphenol Concentration', y = 'Proportion of Developed Embryos')+
+    geom_errorbar(aes(x = Treatment, ymin=mean.prop-se.prop, ymax=mean.prop+se.prop, color = MatePair), 
+                  width = .1, linewidth=0.1) + 
+  labs(title = 'B. Developmental Success', x = 'Nonylphenol Concentration', y = 'Proportion of Developed Embryos')+
     theme_box()+
-  scale_color_brewer(palette="Dark2")
+  scale_color_manual(values = cb4.n)
 
 
 fullcount <- Ff + DD + plot_layout(guides="collect")
-ggsave("fullcount.png",fullcount, width=30, height=18, units = "cm")
+ggsave("dose_exposure/figs/fullcount.png",fullcount, width=30, height=18, units = "cm")
 #save figure in large format--> higher quality too!
 ggsave("DE_Dev.png",DD, width=16, height=20, units = "cm") 
 
@@ -137,7 +151,7 @@ BP<-BP %>% dplyr::select (1:9) %>%
 #add new column for survival differences between blast and plut
 BP <- BP %>% 
   mutate (prop_survival=((mean.plut.per.mL-mean.blast.per.mL)/mean.blast.per.mL)) %>% 
-  mutate(Treatment = fct_relevel(Treatment.x, c("Control", "100 ppb", "500 ppb", "1000 ppb")))
+  mutate(Treatment = fct_relevel(Treatment, c("Control", "100 ppb", "500 ppb", "1000 ppb")))
 
 BP$MatePair<- factor(x=BP$MatePair, labels=c(
   "1" ="Pair 1",
@@ -150,15 +164,15 @@ write.csv(BP, "meancounts_survival.csv")
 
 survivalblast_plut<-
 ggplot(BP, aes(x=Treatment, y=prop_survival, color=MatePair)) +
-  #geom_line(aes(color= MatePair, group=MatePair))+
+  geom_line(aes(color= MatePair, group=MatePair))+
   geom_point(size=4)+
   labs(title = '', x = 'Nonylphenol Concentration', 
        y = 'Proportion Survival')+
   theme_box()+
-  scale_color_brewer(palette="Dark2")
+  scale_color_manual(values = cb4.n)
 
 
-ggsave("blast_plut_survival-nolines.png",survivalblast_plut, width=30, height=20, units = "cm") 
+ggsave("Dose_exposure/figs/blast_plut_survival.png",survivalblast_plut, width=30, height=20, units = "cm") 
 
 BP_stats<-lm(prop_survival~Treatment+MatePair, data=BP)
 summary(BP_stats) 

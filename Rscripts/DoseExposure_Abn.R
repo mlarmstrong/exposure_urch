@@ -21,6 +21,18 @@ theme_box <- function(base_size = 11, base_family = '') {
     theme(text = element_text(size = 20), 
           panel.border = element_rect(color = "black", fill = NA, size = 1)) 
 }
+
+##color scheme
+cb4 <- c(
+  "Pair 1" = "#00AEEF",  # Teal / Cyan
+  "Pair 2" = "#99CC33",  # Lime Green
+  "Pair 3" = "#FF6F00",  # Reddish Orange
+  "Pair 4" = "#990099"   # Purple / Magenta
+)
+
+
+
+
 #Blastula####
 abn_countB<-read.csv("Dose_exposure/Blastula_abn_counts.csv") #count data
 
@@ -191,7 +203,7 @@ plutabn_boxplot<-ggplot(abnP2C, aes(x=Treatment, y=prop.abn.2C, fill=Treatment))
   geom_hline(yintercept = 0, color="gray")+
   labs(title = 'Proportion Abnormal Pluteus Relative to Control Across Treatments', x = 'Nonylphenol Concentration',
        y = 'Proportion of Abnormal Pluteus') + theme_box()+
-  scale_fill_brewer(palette="Dark")
+  scale_fill_brewer(palette="Dark2")
 
 ggsave("boxplot_plutsbn2control.png",plutabn_boxplot, width=20, height=13, units = "cm") 
 
@@ -246,32 +258,32 @@ abn.norm$MatePair<- factor(x=abn.norm$MatePair, labels=c(
 anova(lm(prop.abn.bl~Treatment+as.factor(MatePair),data=abn.norm))
 anova(lm(normalized_value~Treatment+MatePair,data=abn.norm))
 anova(lm(prop.abn.ga~Treatment+as.factor(MatePair),data=abn.norm))
-anova(lm(prop.abn.pl~Treatment+MatePair,data=abn.norm))
+anova(lm(prop.abn.pl~Treatment+as.factor(MatePair),data=abn.norm))
 
 # figures in paper####
-bl <- ggplot(abn.norm, aes(x=Treatment, y=prop.abn.bl, color=MatePair)) +
+one <- ggplot(abn.norm, aes(x=Treatment, y=prop.abn.bl, color=MatePair)) +
   geom_point(size=4)+
   geom_hline(yintercept = 0, color="white")+
-  #geom_line(aes(color= MatePair, group=MatePair))+
-  labs(title = 'Blastula', x = 'Nonylphenol Concentration',
+  geom_line(aes(color= MatePair, group=MatePair))+
+  labs(title = 'A. Blastula', x = 'Nonylphenol Concentration',
        y = 'Proportion of Abnormal Blastula') + theme_box()+
-  scale_color_brewer(palette="Dark2")
+  scale_color_manual(values = cb4)
 
-ga <- ggplot(abn.norm, aes(x=Treatment, y=prop.abn.ga, color=MatePair)) +
+two <- ggplot(abn.norm, aes(x=Treatment, y=prop.abn.ga, color=MatePair)) +
   geom_point(size=4)+
-  #geom_line(aes(color= MatePair, group=MatePair))+
-  labs(title = 'Gastrula', x = 'Nonylphenol Concentration',
+  geom_line(aes(color= MatePair, group=MatePair))+
+  labs(title = 'B. Gastrula', x = 'Nonylphenol Concentration',
        y = 'Proportion of Abnormal Gastrula') + theme_box()+
-  scale_color_brewer(palette="Dark2")
+  scale_color_manual(values = cb4)
 
 
-pl <- ggplot(abn.norm, aes(x=Treatment, y=prop.abn.pl, color=MatePair)) +
+three <- ggplot(abn.norm, aes(x=Treatment, y=prop.abn.pl, color=MatePair)) +
   geom_point(size=4)+
-  #geom_line(aes(color= MatePair, group=MatePair))+
-  labs(title = 'Pluteus', x = 'Nonylphenol Concentration',
+  geom_line(aes(color= MatePair, group=MatePair))+
+  labs(title = 'C. Pluteus', x = 'Nonylphenol Concentration',
        y = 'Proportion of Abnormal Pluteus') + theme_box()+
-  scale_color_brewer(palette="Dark2")
+  scale_color_manual(values = cb4)
 
 
-full.abn<-bl + ga + pl + plot_layout(guides="collect")
-ggsave("all.abn-nolines.png",full.abn, width=40, height=20, units = "cm") 
+full.abn<-one + two + three + plot_layout(guides="collect")
+ggsave("Dose_exposure/figs/all.abn.png",full.abn, width=40, height=20, units = "cm") 

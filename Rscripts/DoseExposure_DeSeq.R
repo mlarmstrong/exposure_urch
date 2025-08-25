@@ -29,6 +29,8 @@ library(tximport)
 library(variancePartition)
 library(pheatmap)
 library(ashr)
+library(gridExtra)
+library(grid)
 
 #figure theme to keep things consistent
 theme_box <- function(base_size = 11, base_family = '') {
@@ -37,6 +39,12 @@ theme_box <- function(base_size = 11, base_family = '') {
           panel.border = element_rect(color = "black", fill = NA, size = 1)) 
 }
 
+cb4 <- c(
+  "Pair 1" = "#00AEEF",  # Teal / Cyan
+  "Pair 2" = "#99CC33",  # Lime Green
+  "Pair 3" = "#FF6F00",  # Reddish Orange
+  "Pair 4" = "#990099"   # Purple / Magenta
+)
 #create a vector of filenames, reading in a table that contains the sample IDs
 dir <- "~/Desktop/purp dev data/Dose_exposure/Salmon_quant"
 files_list <- list.files(dir)
@@ -142,19 +150,24 @@ vsd.gast <- vst(dds.gast, blind=FALSE)
 vsd.gast$Treatment <- factor(as.character(vsd.gast$Treatment), 
                         levels=c("C", "NP100", "NP500", "NP1000"))
 
-
+vsd.gast$Matepair<- factor(x=vsd.gast$Matepair, labels=c(
+  "MP1" ="Pair 1",
+  "MP2" = "Pair 2",
+  "MP3" = "Pair 3",
+  "MP4" = "Pair 4"
+))
 ###2. PLOTTING PCAS-GASTRULA####
 pcaData<-
-  plotPCA(vsd.gast, intgroup=c("Matepair", "Treatment"),  pcsToUse=1:2, returnData=TRUE) #using ntop=500 top features by variance
+  plotPCA(vsd.gast, intgroup=c("Matepair", "Treatment"),  pcsToUse=3:4, returnData=TRUE) #using ntop=500 top features by variance
 percentVar <- round(100 * attr(pcaData, "percentVar"))
 
-#pca.gast<-
-ggplot(pcaData, aes(x=PC1, y=PC2, color=Matepair, shape=Treatment)) +
+pca.gast34<-
+ggplot(pcaData, aes(x=PC3, y=PC4, color=Matepair, shape=Treatment)) +
   geom_point(size=4) +
-  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
-  ylab(paste0("PC2: ",percentVar[2],"% variance")) + 
+  xlab(paste0("PC3: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC4: ",percentVar[2],"% variance")) + 
   labs(title= "A. Gastrula")+
-  scale_color_brewer(palette="Dark2")+
+  scale_color_manual(values = cb4)+
   theme(legend.position="right") + theme_box()
 
 #linear models
@@ -165,7 +178,7 @@ MPT3<-lm(PC2~Matepair+Treatment, data=pcaData)
 
 summary(MPT1) #PC1 comparisons: MP3 & MP4 sig diff
 summary (MPT2) #MP3 and NP500 sig diff
-anova(MPT3) #matepair and treatment
+anova(MPT1) #matepair and treatment
 
 
 #### Identify Differentially Expressed GENES ####  
@@ -352,8 +365,24 @@ dds.gast_lrt <- DESeq(dds.gast, test="LRT", reduced = ~ Matepair)
 # Extract results
 res.gast_LRT <- results(dds.gast_lrt)
 res.gast_LRT
+res.gast_LRT["XM_030990778.1",]
+
 #####SAVE FOR TOPGO
 write.csv(res.gast_LRT,file="Dose_exposure/RNA_data/results.gast_LRT.csv", row.names=TRUE)
+
+##which treatment is the heat shock protein differentially expressed?####
+treats<-c("C"= "#A6CEE3" , "NP100"= "#1F78B4", "NP500"= "#33A02C", "NP1000"="#006D2C")
+
+gene_id <- "XM_030990778.1" #top expressed gene in gastrula
+gast_df<-plotCounts(dds.gast_lrt, gene=gene_id, intgroup=c("Treatment", "Matepair"), returnData=TRUE) ##highest counts in 1000?
+gast_df$Treatment <- factor(gast_df$Treatment, levels = c("C", "NP100", "NP500", "NP1000")) 
+gast.topDEG<-ggplot(gast_df, aes(x=Treatment, y=count, fill=Treatment)) +
+  geom_boxplot(outlier.shape = NA, alpha=0.6) +
+  theme_box() +
+  labs(title=paste("A. Gastrula", gene_id),
+       y="Normalized count") + scale_fill_manual(values=treats)
+
+summary(lm(gast_df$count~gast_df$Treatment)) ##500 and 1000 are different!
 
 # Subset the LRT results to return genes with padj < 0.05
 #The p-values are determined solely by the difference in deviance between the ‘full’ and ‘reduced’ model formula
@@ -375,6 +404,7 @@ dds.gast_lrt.vsd <- vst(dds.gast_lrt, blind=FALSE)
 sigLRT_gast.genes_matrix_var <- assay(dds.gast_lrt.vsd)[sigLRT_gast.genes, ]
 
 df <- as.data.frame(colData(dds.gast_lrt.vsd)[,c("Treatment","Matepair")])
+
 #reorder everything
 df$Treatment <- factor(df$Treatment, levels = c("C", "NP100", "NP500", "NP1000")) 
 df$Matepair <- factor(df$Matepair, levels = c("MP1", "MP2", "MP3", "MP4")) 
@@ -387,20 +417,18 @@ dist_matrix <- dist(treatment_factor)
 
 #colors
 annot_colors=list(
-  Matepair=c("MP1"="#1b9e77", "MP2"="#D95F02", "MP3"="#7570b3", "MP4"="#e7298a"),
+  Matepair=c("MP1" = "#00AEEF", "MP2" = "#99CC33", "MP3" = "#FF6F00",  "MP4" = "#990099"),
   Treatment=c("C"= "#A6CEE3" , "NP100"= "#1F78B4", "NP500"= "#33A02C", "NP1000"="#006D2C")
 )
 
 library(viridis)
 gast.heat<-
-  pheatmap(sigLRT_gast.genes_matrix_var, cluster_rows=TRUE, show_rownames=FALSE,
+  pheatmap(sigLRT_gast.genes_matrix_var, cluster_rows=TRUE, show_rownames=FALSE, 
          cluster_cols=TRUE, annotation_col=df, 
-         annotation_colors=annot_colors,
-         scale="row",clustering_distance_cols=dist_matrix,
+         annotation_colors=annot_colors, 
+         scale="row", clustering_distance_cols=dist_matrix,
          cutree_cols=4,
          color = magma(100))
-  
-ggsave("gast.heatmap.png",gast.heat, width=20, height=16, units = "cm") 
 
 
 ##4. PLUTEUS####
@@ -431,38 +459,36 @@ vsd.plut <- vst(dds.plut, blind=FALSE)
 
 vsd.plut$Treatment <- factor(as.character(vsd.plut$Treatment), 
                              levels=c("C", "NP100", "NP500", "NP1000"))
-
+vsd.plut$Matepair<- factor(x=vsd.plut$Matepair, labels=c(
+  "MP1" ="Pair 1",
+  "MP2" = "Pair 2",
+  "MP3" = "Pair 3",
+  "MP4" = "Pair 4"
+))
 ###5. PLOTTING PCAS-Pluteus####
 pcaData1<-
   plotPCA(vsd.plut, intgroup=c("Matepair", "Treatment"),  
-          pcsToUse=1:2, returnData=TRUE) #using ntop=500 top features by variance
+          pcsToUse=3:4, returnData=TRUE) #using ntop=500 top features by variance
 percentVar2 <- round(100 * attr(pcaData1, "percentVar"))
 
 
-#pca.plut<-
-ggplot(pcaData1, aes(x=PC1, y=PC2, color=Matepair, shape=Treatment)) +
+pca.plut34<-
+ggplot(pcaData1, aes(x=PC3, y=PC4, color=Matepair, shape=Treatment)) +
   geom_point(size=4) +
-  xlab(paste0("PC1: ",percentVar2[1],"% variance")) +
-  ylab(paste0("PC2: ",percentVar2[2],"% variance")) + 
+  xlab(paste0("PC3: ",percentVar2[1],"% variance")) +
+  ylab(paste0("PC4: ",percentVar2[2],"% variance")) + 
   labs(title= "B. Pluteus")+
-  scale_color_brewer(palette="Dark2")+
+  scale_color_manual(values = cb4)+
   theme(legend.position="right")+ theme_box()
-
-######6. PCA figures for paper####
-library(gridExtra)
-#pc1:2 gast and plut and with MP2 dropped
-fullpca12 <- 
-pca.gast + pca.plut + plot_layout(guides="collect")
-ggsave("fullpca12.png",fullpca12, width=30, height=18, units = "cm")
 
 
 #PC~linear models for pluteus: rerun code above to ensure correct axes
-pMPT1<-lm(PC1~Matepair+Treatment, data=pcaData1)
+pMPT1<-lm(PC10~Matepair+Treatment, data=pcaData1)
 ##PC2
 pMPT3<-lm(PC2~Matepair+Treatment, data=pcaData1)
 summary(pMPT) #PC1 comparisons: MP3 & MP4 sig diff (like Gastrula)
 summary (pMPT2) #MP2&3 sig diff (different than Gastrula)
-anova(pMPT3) #matepair highly sig
+anova(pMPT1) #matepair highly sig
 
 #### Identify Differentially Expressed GENES ####  
 
@@ -631,7 +657,7 @@ summary(resp5)
 resp15<-results(dose.plut, contrast=c("Treatment", "NP100", "NP500"))
 summary(resp15) 
 
-###7. LRT Pluteus--DEGs all treatments######
+###6. LRT Pluteus--DEGs all treatments######
 # The full model was specified previously with the `design = ~ sampletype`:
 
 # Likelihood ratio test
@@ -645,6 +671,19 @@ res.plut_LRT
 #####SAVE FOR TOPGO
 write.csv(res.plut_LRT,file="Dose_exposure/RNA_data/results.plut_LRT.csv", row.names=TRUE)
 
+##which treatment is the heat shock protein differentially expressed?####
+treats<-c("C"= "#A6CEE3" , "NP100"= "#1F78B4", "NP500"= "#33A02C", "NP1000"="#006D2C")
+
+gene_id.p <- "XM_030980614.1" #top expressed gene in pluteus
+plut_df<-plotCounts(dds.plut_lrt, gene=gene_id.p, intgroup=c("Treatment", "Matepair"), returnData=TRUE) ##highest counts in 1000?
+plut_df$Treatment <- factor(plut_df$Treatment, levels = c("C", "NP100", "NP500", "NP1000")) 
+plut.topDEG<-ggplot(plut_df, aes(x=Treatment, y=count, fill=Treatment)) +
+  geom_boxplot(outlier.shape = NA, alpha=0.6) +
+  theme_box() +
+  labs(title=paste("B. Pluteus", gene_id.p),
+       y="Normalized count") + scale_fill_manual(values=treats)
+
+summary(lm(plut_df$count~plut_df$Treatment)) ##1000 is different!
 
 # Subset the LRT results to return genes with padj < 0.05
 #The p-values are determined solely by the difference in deviance between the ‘full’ and ‘reduced’ model formula
@@ -678,7 +717,7 @@ dist_matrix1 <- dist(treatment_factor1)
 
 #colors
 annot_colors=list(
-  Matepair=c("MP1"="#1b9e77", "MP2"="#D95F02", "MP3"="#7570b3", "MP4"="#e7298a"),
+  Matepair=c("MP1" = "#00AEEF", "MP2" = "#99CC33", "MP3" = "#FF6F00",  "MP4" = "#990099"),
   Treatment=c("C"= "#A6CEE3" , "NP100"= "#1F78B4", "NP500"= "#33A02C", "NP1000"="#006D2C")
 )
 
@@ -691,4 +730,38 @@ plut.heat<-
            cutree_cols=4,border_color=NA,
            color = magma(100))
 
-ggsave("plut.heatmap.png",plut.heat, width=20, height=16, units = "cm") 
+####7. figures for paper####
+
+library(patchwork)
+##pca
+fullpca12 <- 
+  pca.gast + pca.plut + plot_layout(guides="collect")
+ggsave("dose_exposure/figs/fullpca12.png",fullpca12, width=30, height=18, units = "cm")
+
+supp_pca<-
+  pca.gast34 + pca.plut34 + plot_layout(guides="collect")
+ggsave("dose_exposure/figs/supp_pca34.png",supp_pca, width=30, height=18, units = "cm")
+
+##top genes supp
+topgenes<-gast.topDEG + plut.topDEG + plot_layout(guides="collect")
+ggsave("dose_exposure/figs/topgenes.png",topgenes, width=30, height=18, units = "cm")
+
+
+##heat map
+full.heat <-
+grid.arrange(
+  arrangeGrob(
+    gast.heat$gtable,
+    top = textGrob("A. Gastrula", x = 0, hjust = 0,
+                   gp = gpar(fontsize = 20))
+  ),
+  arrangeGrob(
+    plut.heat$gtable,
+    top = textGrob("B. Pluteus", x = 0, hjust = 0,
+                   gp = gpar(fontsize = 20))
+  ),
+  ncol = 2
+)
+
+ggsave("dose_exposure/figs/heatmap.png",full.heat, width=25, height=15, units = "cm") 
+
